@@ -29,7 +29,11 @@ function offscreen.new(screenWidth, screenHeight)
 ----
 -- Let the function empty to be assign later
 ----
-    self.draw = nil
+    self.draw = function(fnDraw)
+        self.beginDraw()
+        fnDraw()
+        self.endDraw()
+    end
 
     return self
 end
