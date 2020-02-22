@@ -45,26 +45,22 @@ player.new = function()
                 self.facingRight = -1
                 self.physicObj:setLinearVelocity(-80, vy)
             else
-                    self.image:setTag("iddle")
+                self.image:setTag("iddle")
                 self.physicObj:setLinearVelocity(0, vy)
             end
 
-            if  self.physicObj:enter('ground') then
-                self.onground = true
-            end
             
-            if(vy > 10) then
-                self.image:setTag("fall")
-            end
-
-            if(vy < -10) then
-                self.image:setTag("jump")
-            end
-
         end
         
+        if  self.physicObj:enter('ground') then
+            self.onground = true
+        end
         local vx, vy = self.physicObj:getLinearVelocity()
-        
+        print(vy .. " "  .. dump(self.onground))
+        if(math.abs(vy)> 10) then
+            self.onground = false
+        end
+
         if(inputManager.currentState.space and self.onground ) then
             self.onground=false
             self.physicObj:setLinearVelocity(vx, 0)
@@ -77,7 +73,7 @@ player.new = function()
             end
         end
 
-        if(inputManager.currentState.ctrl and (self.image.tagName == "run" or self.image.tagName == "iddle") and math.abs(vy) < 10 ) then
+        if(inputManager.currentState.mouseRight and (self.image.tagName == "run" or self.image.tagName == "iddle") and math.abs(vy) < 10 ) then
             
             self.image:setTag("slide")
         end
@@ -89,10 +85,6 @@ player.new = function()
         end
 
 
-
-        if(math.abs(vy)> 10) then
-            self.onground = falsed
-        end
 
         if(self.facingRight == 1) then
             self.arm.rot = math.pi*2 - math.atan2((inputManager.mousePosition.x - self.x-self.arm.x), (inputManager.mousePosition.y - self.y-self.arm.y)) + math.pi/2

@@ -9,7 +9,7 @@ testscene.new = function()
     self.player = nil
     self.init = function()
         --    self.baseTileset = tileset.new(Assets.images.tilesheettest,16)
-        self.baseMap = tilemap.new("assets/maps/testmap")
+        self.baseMap = tilemap.new("assets/maps/labo")
         Camera:setWorld(0,0,self.baseMap.datas.width*self.baseMap.datas.tilewidth,self.baseMap.datas.height*self.baseMap.datas.tileheight)
         
         self.player = player.new()
@@ -31,7 +31,8 @@ testscene.new = function()
                 self.slowmoTimer = Timer.every(0.05, function () self.fadeInSlowmo() end)
              end
         end
-
+        
+        
     
         SLOWFACTOR = math.max(1-math.min(1,self.slowmo/255),0.01)
         --print(SLOWFACTOR)
@@ -48,7 +49,7 @@ testscene.new = function()
         if(self.slowmo >= 255) then
             self.slowmoTimer:remove()
             
-            Timer.after(5, function ()  self.slowmoTimer = Timer.every(0.05, function () self.fadeOutSlowmo() end)  end)
+            Timer.after(Assets.datas.game.bullettime_secondes, function ()  self.slowmoTimer = Timer.every(0.05, function () self.fadeOutSlowmo() end)  end)
            
         end
     end
