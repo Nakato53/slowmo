@@ -1,25 +1,7 @@
 { "frames": [
    {
-    "filename": "player 0.aseprite",
+    "filename": "shotgun 0.aseprite",
     "frame": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "sourceSize": { "w": 32, "h": 32 },
-    "duration": 300
-   },
-   {
-    "filename": "player 1.aseprite",
-    "frame": { "x": 32, "y": 0, "w": 32, "h": 32 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "sourceSize": { "w": 32, "h": 32 },
-    "duration": 1000
-   },
-   {
-    "filename": "player 2.aseprite",
-    "frame": { "x": 64, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -27,7 +9,25 @@
     "duration": 100
    },
    {
-    "filename": "player 3.aseprite",
+    "filename": "shotgun 1.aseprite",
+    "frame": { "x": 32, "y": 0, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   {
+    "filename": "shotgun 2.aseprite",
+    "frame": { "x": 64, "y": 0, "w": 32, "h": 32 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
+    "sourceSize": { "w": 32, "h": 32 },
+    "duration": 50
+   },
+   {
+    "filename": "shotgun 3.aseprite",
     "frame": { "x": 96, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -36,25 +36,25 @@
     "duration": 100
    },
    {
-    "filename": "player 4.aseprite",
+    "filename": "shotgun 4.aseprite",
     "frame": { "x": 128, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
+    "duration": 50
    },
    {
-    "filename": "player 5.aseprite",
+    "filename": "shotgun 5.aseprite",
     "frame": { "x": 160, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
+    "duration": 50
    },
    {
-    "filename": "player 6.aseprite",
+    "filename": "shotgun 6.aseprite",
     "frame": { "x": 192, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -63,7 +63,7 @@
     "duration": 100
    },
    {
-    "filename": "player 7.aseprite",
+    "filename": "shotgun 7.aseprite",
     "frame": { "x": 224, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -72,7 +72,7 @@
     "duration": 100
    },
    {
-    "filename": "player 8.aseprite",
+    "filename": "shotgun 8.aseprite",
     "frame": { "x": 256, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -81,7 +81,7 @@
     "duration": 100
    },
    {
-    "filename": "player 9.aseprite",
+    "filename": "shotgun 9.aseprite",
     "frame": { "x": 288, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -90,7 +90,7 @@
     "duration": 100
    },
    {
-    "filename": "player 10.aseprite",
+    "filename": "shotgun 10.aseprite",
     "frame": { "x": 320, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -99,7 +99,7 @@
     "duration": 100
    },
    {
-    "filename": "player 11.aseprite",
+    "filename": "shotgun 11.aseprite",
     "frame": { "x": 352, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -108,7 +108,7 @@
     "duration": 100
    },
    {
-    "filename": "player 12.aseprite",
+    "filename": "shotgun 12.aseprite",
     "frame": { "x": 384, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -117,35 +117,8 @@
     "duration": 100
    },
    {
-    "filename": "player 13.aseprite",
+    "filename": "shotgun 13.aseprite",
     "frame": { "x": 416, "y": 0, "w": 32, "h": 32 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
-   },
-   {
-    "filename": "player 14.aseprite",
-    "frame": { "x": 448, "y": 0, "w": 32, "h": 32 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
-   },
-   {
-    "filename": "player 15.aseprite",
-    "frame": { "x": 480, "y": 0, "w": 32, "h": 32 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
-   },
-   {
-    "filename": "player 16.aseprite",
-    "frame": { "x": 512, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
@@ -156,17 +129,14 @@
  "meta": {
   "app": "http://www.aseprite.org/",
   "version": "1.2.16.3-x64",
-  "image": "player.png",
+  "image": "shotgun.png",
   "format": "RGBA8888",
-  "size": { "w": 544, "h": 32 },
+  "size": { "w": 448, "h": 32 },
   "scale": "1",
   "frameTags": [
-   { "name": "iddle", "from": 0, "to": 1, "direction": "forward" },
-   { "name": "run", "from": 2, "to": 7, "direction": "forward" },
-   { "name": "jump", "from": 8, "to": 8, "direction": "forward" },
-   { "name": "fall", "from": 9, "to": 9, "direction": "forward" },
-   { "name": "slide", "from": 10, "to": 13, "direction": "forward" },
-   { "name": "frontjump", "from": 14, "to": 16, "direction": "forward" }
+   { "name": "iddle", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "fire", "from": 1, "to": 5, "direction": "forward" },
+   { "name": "reload", "from": 6, "to": 13, "direction": "forward" }
   ],
   "layers": [
    { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }

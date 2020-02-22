@@ -16,6 +16,9 @@ inputManager.resetState = function()
         space = false ,
         shift = false ,
         r = false ,
+        ctrl = false ,
+        mouseLeft = false,
+        mouseRight = false
     }
 end
 
@@ -53,11 +56,20 @@ inputManager.update = function(dt)
     if love.keyboard.isDown( "space" ) then
         inputManager.currentState.space = true
     end
+    if love.keyboard.isDown( "lctrl" ) then
+        inputManager.currentState.ctrl = true
+    end
     if love.keyboard.isDown( "lshift" ) then
         inputManager.currentState.shift = true
     end
     if love.keyboard.isDown( "r" ) then
         inputManager.currentState.r = true
+    end
+    if love.mouse.isDown( 1 ) then
+        inputManager.currentState.mouseLeft = true
+    end
+    if love.mouse.isDown( 2 ) then
+        inputManager.currentState.mouseRight = true
     end
 end
 

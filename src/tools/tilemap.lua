@@ -9,7 +9,7 @@ tilemap.new = function(mapfile)
     self.tileset = tileset.new(  love.graphics.newImage(self.datas.tilesets[1].image),self.datas.tilesets[1].tilewidth) 
     
     self.world = Windfield.newWorld(0, 0, true)
-    self.world:setGravity(0, 512)
+    self.world:setGravity(0, 250)
 
     self.world:addCollisionClass('interact')
     self.world:addCollisionClass('npc')
@@ -20,6 +20,7 @@ tilemap.new = function(mapfile)
 
     
     self.objects = {}
+    bulletsClear()
 
 ---
 --  Test if it's a collision layer, if yes create all physics objects

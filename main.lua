@@ -7,6 +7,7 @@ require('./require')
 -- Entry point
 ----
 Camera = nil
+SLOWFACTOR = 1
 function love.load()
     
     --monster = Peachy.new("assets/json/monster.json", Assets.images.monster, "Poney")
