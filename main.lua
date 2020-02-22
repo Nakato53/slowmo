@@ -6,13 +6,20 @@ require('./require')
 ----
 -- Entry point
 ----
+Camera = nil
 function love.load()
     
     --monster = Peachy.new("assets/json/monster.json", Assets.images.monster, "Poney")
+
     love.graphics.setDefaultFilter("nearest", "nearest") 
     love.window.setMode(config.gameWidth*config.windowScale, config.gameHeight*config.windowScale, {resizable=false})
     gameScreen = offscreen.new(config.gameWidth,config.gameHeight)
-     colorConverter.setBackgroundColor(100,150,150,255)
+    colorConverter.setBackgroundColor(100,150,150,255)
+    
+    Camera = Gamera.new(0,0,config.gameWidth*config.windowScale,config.gameHeight*config.windowScale)
+    Camera:setWindow(0,0,960,540)
+    Camera:setPosition(0,0)
+    Camera:setScale(3)
 
     sceneManager.setScene(testscene.new())
 end
@@ -32,12 +39,12 @@ end
 ----
 function love.draw()
     love.graphics.clear();
+    sceneManager.draw()
+   -- gameScreen.draw(function() 
+   --     offscreenDraw()
+  --  end)
     
-    gameScreen.draw(function() 
-        offscreenDraw()
-    end)
-    
-    love.graphics.draw(gameScreen.renderScreen, 0, 0, 0, config.windowScale, config.windowScale)
+ --   love.graphics.draw(gameScreen.renderScreen, 0, 0, 0, config.windowScale, config.windowScale)
  end
 
 ----

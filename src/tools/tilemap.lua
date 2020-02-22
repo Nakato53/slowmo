@@ -9,13 +9,26 @@ tilemap.new = function(mapfile)
     self.tileset = tileset.new(  love.graphics.newImage(self.datas.tilesets[1].image),self.datas.tilesets[1].tilewidth) 
     
     self.world = Windfield.newWorld(0, 0, true)
+    self.world:setGravity(0, 512)
 
+    self.world:addCollisionClass('interact')
+    self.world:addCollisionClass('npc')
+    self.world:addCollisionClass('enemy')
+    self.world:addCollisionClass('player', { ignores= {'npc','enemy'} } )
+    self.world:addCollisionClass('ground')
     self.collisionsObjects = {}
+
+    
+    self.objects = {}
 
 ---
 --  Test if it's a collision layer, if yes create all physics objects
 ---
     for i=1,#self.datas.layers do
+
+        ---
+        -- Create all collisions objects
+        ---
         local collisionLayer = "collisions"
         if(self.datas.layers[i].name:sub(1, #collisionLayer) == collisionLayer) then
 
@@ -30,12 +43,34 @@ tilemap.new = function(mapfile)
                         physicObj:setCollisionClass(obj.type)
                     end
                 end
+                if(obj.shape == "polygon") then
+                    local vertices = {}
+                    for k=1,#obj.polygon do
+                        table.insert(vertices, obj.x + obj.polygon[k].x)
+                        table.insert(vertices, obj.y + obj.polygon[k].y)
+                    end
+                    physicObj = self.world:newPolygonCollider(vertices)
+                    physicObj:setType('static')
+                    if(obj.type ~= "") then
+                        physicObj:setCollisionClass(obj.type)
+                    end
+                    physicObj:setMass(100)
+                end
                 table.insert(self.collisionsObjects, physicObj)
             end
-
-            -- remove the layer as no need to be diplay
-            table.remove(self.datas.layers,i)
         end
+
+        ---
+        -- Load all datas
+        ---
+        local datasLayer = "datas"
+        if(self.datas.layers[i].name:sub(1, #datasLayer) == datasLayer) then
+            for j=1,#self.datas.layers[i].objects do
+                self.objects[self.datas.layers[i].objects[j].name] = self.datas.layers[i].objects[j]
+            end
+            
+        end
+
     end
 
     self.update = function(dt)
@@ -44,9 +79,11 @@ tilemap.new = function(mapfile)
 
     self.draw = function(camera)
         for i=1,#self.datas.layers do
-            self.drawLayer(i, camera)
+            if(self.datas.layers[i].type == "tilelayer") then
+                self.drawLayer(i, camera)
+            end
         end
-        self.world:draw()
+       -- self.world:draw()
     end
 
     self.drawLayer = function(layerId, camera)

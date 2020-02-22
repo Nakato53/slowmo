@@ -2,41 +2,72 @@ testscene = {}
 
 testscene.new = function()
     local self = {}
-    self.x = 150
-    self.y = 150
+    self.slowmo = 0
+    self.slowmoTimer = nil
+    self.player = nil
     self.init = function()
         --    self.baseTileset = tileset.new(Assets.images.tilesheettest,16)
         self.baseMap = tilemap.new("assets/maps/testmap")
-        self.camera = Gamera.new(0,0,self.baseMap.datas.width*self.baseMap.datas.tilewidth,self.baseMap.datas.height*self.baseMap.datas.tileheight)
-        self.camera:setWindow(0,0,320,180)
-        self.camera:setPosition(0,0)
+        Camera:setWorld(0,0,self.baseMap.datas.width*self.baseMap.datas.tilewidth,self.baseMap.datas.height*self.baseMap.datas.tileheight)
+        
+        self.player = player.new()
+        self.player.x = self.baseMap.objects.player.x
+        self.player.y = self.baseMap.objects.player.y
+        self.player.physicObj = self.baseMap.world:newCircleCollider(self.player.x,self.player.y, 8)
     end
     
     self.update = function(dt)
-        if(inputManager.currentState.left) then
-            self.camera.x = self.camera.x -1
+        Camera:setPosition(self.player.x, self.player.y)
+
+        if(inputManager.isPressedThisFrame("shift")) then
+             if(self.slowmoTimer == nil) then
+                self.slowmoTimer = Timer.every(0.05, function () self.fadeInSlowmo() end)
+             end
         end
-        if(inputManager.currentState.right) then
-            self.camera.x = self.camera.x +1
-        end
-        if(inputManager.currentState.up) then
-            self.camera.y = self.camera.y -1
-        end
-        if(inputManager.currentState.down) then 
-            self.camera.y = self.camera.y +1
-        end
-       -- self.camera:setPosition(self.x,self.y)
-        print(self.camera:getVisible())
-        self.baseMap.update(dt)
+
+
+
+        local slowDT = dt * (0.4+(1-math.min(1,self.slowmo/255))*0.6 )
+        print(slowDT)
+        self.player.update(slowDT)
+
+        self.baseMap.update(slowDT)
     end
     
+    self.fadeInSlowmo = function()
+        self.slowmo = self.slowmo+15
+        if(self.slowmo >= 255) then
+            self.slowmoTimer:remove()
+            
+            Timer.after(5, function ()  self.slowmoTimer = Timer.every(0.05, function () self.fadeOutSlowmo() end)  end)
+           
+        end
+    end
     
+    self.fadeOutSlowmo = function()
+        self.slowmo = self.slowmo-15
+        if(self.slowmo <= 0) then
+            self.slowmoTimer:remove()
+            self.slowmoTimer=nil
+            self.slowmo = 0
+        end
+    end
+
     self.draw = function()
         love.graphics.clear(0.7,0.7,0.7,1)
-        self.camera:draw(function(l,t,w,h)
+        Camera:draw(function(l,t,w,h)
             self.baseMap.draw()
+            self.player.draw()
+
         end)
-        --love.graphics.draw(Assets.images.tilesheettest, self.baseTileset.getTileById(self.tileId),50,50)
+
+
+
+        colorConverter.setColor(255,255,255, self.slowmo)
+        love.graphics.draw(Assets.images.slowmo,0,0,0,3,3)
+        colorConverter.setColor(255,255,255, 255)
+
+
     end
 
     self.init()

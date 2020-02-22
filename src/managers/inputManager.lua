@@ -14,6 +14,8 @@ inputManager.resetState = function()
         right = false,
         down = false,
         space = false ,
+        shift = false ,
+        r = false ,
     }
 end
 
@@ -21,6 +23,7 @@ end
 -- Initialize all states
 ----
 inputManager.init = function()
+    inputManager.mousePosition = { x=0, y=0 }
     inputManager.currentState = inputManager.resetState()
     inputManager.lastState = inputManager.resetState()  
 end
@@ -30,24 +33,31 @@ end
 -- Update inputs
 ----
 inputManager.update = function(dt)
+    inputManager.mousePosition.x, inputManager.mousePosition.y = Camera:toWorld(love.mouse.getPosition()) 
     inputManager.lastState = inputManager.currentState
     
     inputManager.currentState = inputManager.resetState()
 
-    if love.keyboard.isDown( "left" ) then
+    if love.keyboard.isDown( "left" ) or  love.keyboard.isDown( "q" ) or  love.keyboard.isDown( "a" ) then
         inputManager.currentState.left = true
     end
-    if love.keyboard.isDown( "right" ) then
+    if love.keyboard.isDown( "right" ) or  love.keyboard.isDown( "d" ) then
         inputManager.currentState.right = true
     end
-    if love.keyboard.isDown( "up" ) then
+    if love.keyboard.isDown( "up" ) or  love.keyboard.isDown( "w" )  or  love.keyboard.isDown( "z" )  then
         inputManager.currentState.up = true
     end
-    if love.keyboard.isDown( "down" ) then
+    if love.keyboard.isDown( "down" )  or  love.keyboard.isDown( "s" ) then
         inputManager.currentState.down = true
     end
     if love.keyboard.isDown( "space" ) then
         inputManager.currentState.space = true
+    end
+    if love.keyboard.isDown( "lshift" ) then
+        inputManager.currentState.shift = true
+    end
+    if love.keyboard.isDown( "r" ) then
+        inputManager.currentState.r = true
     end
 end
 
@@ -71,3 +81,6 @@ inputManager.isReleaseThisFrame = function(key)
     end
     return false
 end
+
+
+inputManager.init()

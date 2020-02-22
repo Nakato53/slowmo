@@ -33,3 +33,8 @@ require('./src/managers/sceneManager');
 -- Load scenes
 ----
 require('./src/scenes/testscene');
+
+----
+-- Load entities
+----
+require('./src/entities/player');
